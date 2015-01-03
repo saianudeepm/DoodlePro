@@ -1,0 +1,246 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DoodleActivity"
+    android:background="@android:color/darker_gray"
+    >
+    <!-- Layout to switch between brush layout and tool tip layout-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/hideframe_layout">
+
+        <LinearLayout
+            android:id="@+id/tooltip_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:backgroundTint="@android:color/transparent"
+            android:gravity="center_horizontal"
+            android:visibility="visible"
+            >
+
+            <!-- new button -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/newfile_btn"
+                android:layout_gravity="start|center_vertical"
+                android:src="@drawable/ic_newfile"
+                android:contentDescription="@string/newfile"
+                android:clickable="true"
+                android:onClick="createNewFile"
+                />
+
+            <!-- paint brush button -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/brush_btn"
+                android:layout_gravity="start|center_vertical"
+                android:src="@drawable/ic_brush"
+                android:contentDescription="@string/brush"
+                android:onClick="toggleToolTip"/>
+
+            <!-- erase button -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/eraser_btn"
+                android:layout_gravity="start|center_vertical"
+                android:src="@drawable/ic_eraser"
+                android:contentDescription="@string/eraser"
+                android:clickable="true"
+                android:onClick="selectEraser"
+                />
+
+            <!-- save button -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/save_btn"
+                android:layout_gravity="start|center_vertical"
+                android:src="@drawable/ic_save"
+                android:contentDescription="@string/save"
+                android:clickable="true"/>
+
+        </LinearLayout>
+
+        <!-- layout to choose brush size -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/brush_layout"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+            <ImageButton
+                android:id="@+id/ic_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_back"
+                android:contentDescription="back"
+                android:onClick="toggleToolTip"/>
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/brush_small_btn"
+                android:text="small"
+                android:onClick="selectBrushSize"
+                android:tag="4"
+                />
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/brush_medium_btn"
+                android:text="medium"
+                android:onClick="selectBrushSize"
+                android:tag="8"
+                />
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/brush_large_btn"
+                android:text="large"
+                android:onClick="selectBrushSize"
+                android:tag="12"
+                />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+
+    <!-- Custom painting view -->
+    <view
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        class="com.salome.doodlepro.DoodleView"
+        android:id="@+id/doodleView"
+        android:background="@android:color/background_light"
+        android:layout_below="@+id/hideframe_layout"
+        android:layout_above="@+id/color_layout"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:outlineProvider="background" />
+
+    <!-- Color picker layout -->
+    <LinearLayout
+        android:id="@+id/color_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal">
+
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            android:background="@color/black"
+            android:onClick="colorPicker"
+            android:contentDescription="black"
+            android:clickable="true"
+            android:src="@drawable/color_picker_button"
+            />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            android:background="@color/green"
+            android:onClick="colorPicker"
+            android:src="@drawable/color_picker_button"
+            android:contentDescription="green"
+            android:clickable="true"
+             />
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            android:background="@color/red"
+            android:src="@drawable/color_picker_button"
+            android:onClick="colorPicker"
+            android:contentDescription="red"
+            android:clickable="true"
+             />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            android:background="@color/blue"
+            android:onClick="colorPicker"
+            android:contentDescription="blue"
+            android:clickable="true"
+            android:src="@drawable/color_picker_button"
+            />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            android:background="@color/yellow"
+            android:onClick="colorPicker"
+            android:contentDescription="yellow"
+            android:clickable="true"
+            android:src="@drawable/color_picker_button"
+            />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            android:background="@color/orange"
+            android:onClick="colorPicker"
+            android:contentDescription="orange"
+            android:clickable="true"
+            android:src="@drawable/color_picker_button"
+            />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            android:background="@color/violet"
+            android:onClick="colorPicker"
+            android:contentDescription="violet"
+            android:clickable="true"
+            android:src="@drawable/color_picker_button"
+            />
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            android:background="@color/indigo"
+            android:onClick="colorPicker"
+            android:contentDescription="indigo"
+            android:clickable="true"
+            android:src="@drawable/color_picker_button"
+            />
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="2dp"
+            android:background="@color/pink"
+            android:onClick="colorPicker"
+            android:contentDescription="pink"
+            android:clickable="true"
+            android:src="@drawable/color_picker_button"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DoodlePro</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_hello_paint">HelloPaintActivity</string>
+    <string name="title_activity_v2">V2Activity</string>
+    <string name="newfile">New File</string>
+    <string name="eraser">Eraser</string>
+    <string name="brush">Brush</string>
+    <string name="save">Save</string>
+
+</resources>
